@@ -2,6 +2,7 @@ const express = require('express');
 const hbs     = require('hbs');
 const fs      = require('fs');
 
+const port = process.env.PORT || 3000;
 var app = express();
 
 hbs.registerPartials(__dirname + '/views/partials');
@@ -25,6 +26,7 @@ app.use((req, res, next) => {
     next();
 });
 
+/*
 app.use((req, res, next) => {
     
     res.render('maintenance.hbs');
@@ -33,8 +35,9 @@ app.use((req, res, next) => {
     since we want to stop app's progress we
     will not call next() function.
     next();
-    */
+    * /
 });
+*/
 
 // app.use() registers a middleware, in 
 // this case it resgisters express's static middleware 
@@ -77,6 +80,7 @@ app.get('/bad', (req, res) => {
     });
 });
 
-app.listen(3000, () => {
-    console.log('\nServer is up & running on port 3000 ...');
+app.listen(port, () => {
+    // console.log('\nServer is up & running on port 3000 ...');
+    console.log(`\nServer is up & running on port ${port} ...`);
 });
